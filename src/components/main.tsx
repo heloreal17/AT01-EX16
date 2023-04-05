@@ -1,14 +1,16 @@
-import { useState } from "react";
+import { useState, Dispatch, SetStateAction } from "react";
 import "../App.css";
+
+type setState = [string, Dispatch<SetStateAction<string>>]
 
 /* use states, salvando nas states */
 export default function Acesso() {
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [senha, setSenha] = useState("");
+  const [name, setName]: setState = useState("");
+  const [email, setEmail]: setState = useState("");
+  const [senha, setSenha]: setState = useState("");
 
   /* alert teste */
-  function sendEmail(e:any) {
+  function sendEmail(e: Event) {
     e.preventDefault();
 
     /* campos vazios < */
@@ -28,7 +30,7 @@ export default function Acesso() {
       <h2 className="subtitle">
         Heloísa Real - 13299 | Mateus Felipe - 14598 | Thiago Baptista - 12264
       </h2>
-      <form className="form" onSubmit={sendEmail}>
+      <form className="form">
         <input
           className="input"
           type="text"
