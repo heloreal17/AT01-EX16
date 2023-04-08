@@ -1,14 +1,22 @@
 /** @format */
 
-//'use client';
+"use client";
 
 import { useState, SetStateAction, Dispatch, DetailedHTMLProps, InputHTMLAttributes } from "react";
+import Credits from "./components/_credits";
+import Copying from "./components/_copying";
 
 type setState = [string, Dispatch<SetStateAction<string>>];
 
 export let ChangePage: boolean = false;
 
 export default function Cadastro() {
+	const Authors = [
+		{ name: "Heloísa Real", rm: 13299 },
+		{ name: "Mateus Felipe", rm: 14598 },
+		{ name: "Thiago Baptista", rm: 12264 },
+	];
+
 	const [name, setName]: setState = useState("");
 	const [email, setEmail]: setState = useState("");
 	const [senha, setSenha]: setState = useState("");
@@ -40,9 +48,8 @@ export default function Cadastro() {
 		<>
 			<div className="border">
 				<h1 className="title">AT01 - EXERCÍCIO 16</h1>
-				<h2 className="subtitle">
-					Heloísa Real - 13299 | Mateus Felipe - 14598 | Thiago Baptista - 12264
-				</h2>
+				<Credits people={Authors} />
+
 				<form className="form">
 					<input
 						className="input"
@@ -72,6 +79,7 @@ export default function Cadastro() {
 					<input onClick={sendEmail} className="button" type="submit" value="Concluir" />
 				</form>
 			</div>
+      <Copying people={Authors} />
 		</>
 	);
 }
